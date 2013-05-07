@@ -1,0 +1,20 @@
+<?php 
+$title = 'Login';
+$this->headtitle($title);
+?>
+
+<h1><?php echo $this->escapehtml($title); ?></h1>
+
+<?php 
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('user', array('action' => 'signin')));
+    $form->prepare();
+    
+    echo $this->form()->openTag($form);
+    echo $this->formrow($form->get('username'));
+    echo $this->formrow($form->get('password'));
+    echo $this->formsubmit($form->get('submit'));
+    echo $this->form()->closeTag();
+?>
+
+<a href="<?php echo $this->url('user', array('action' => 'signup')); ?>">Create an account</a>

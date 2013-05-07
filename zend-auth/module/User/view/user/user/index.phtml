@@ -1,0 +1,13 @@
+<?php 
+$title = 'Welcome !';
+$this->headtitle($title);
+?>
+
+<h1><?php echo $this->escapehtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('user', array('action' => 'signout')); ?>">Logout</a>
+</p>
+<br/>
+<p>
+    Hi, <strong><?php echo $logged ?></strong> !
+</p>
