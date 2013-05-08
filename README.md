@@ -12,6 +12,11 @@ It's verry simple and easy to improve.
 * Sign in
 * Sign out
 
+### Coming soon
+
+* Check username avaiability
+* Edit profil
+
 ### What is required ?
 
 1. Clone this project
