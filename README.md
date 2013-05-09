@@ -1,5 +1,5 @@
 ## ZF2 - Auth
-**Version 1.0 Created by FlorentinTh - 2013**
+**Version 1.1 Created by FlorentinTh - 2013**
 
 ### Introduction
 
@@ -11,11 +11,13 @@ It's verry simple and easy to improve.
 * Sign up
 * Sign in
 * Sign out
+* Check username avaiability
+* Edit profil
 
 ### Coming soon
 
-* Check username avaiability
-* Edit profil
+* ~~Check username avaiability~~
+* ~~Edit profil~~
 
 ### What is required ?
 
