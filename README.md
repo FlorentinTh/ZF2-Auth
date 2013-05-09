@@ -16,8 +16,10 @@ It's verry simple and easy to improve.
 
 ### Coming soon
 
-* ~~Check username avaiability~~
-* ~~Edit profil~~
+* ~~Check username avaiability~~ (v1.1)
+* ~~Edit profil~~ (v1.1)
+* ~~Best UI~~ (v1.2)
+* ~~InputFilters~~ (v1.2)
 
 ### What is required ?
 
