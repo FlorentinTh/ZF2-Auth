@@ -1,0 +1,25 @@
+<?php 
+$title = 'Profile settings';
+$this->headtitle($title);
+?>
+
+<h1><?= $this->escapehtml($title); ?></h1>
+
+<?php 
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+        'user',
+        array(
+            'action' => 'account',
+            'id'     => $this->id            
+        )
+    ));
+    $form->prepare();
+    
+    echo $this->form()->openTag($form);
+    echo $this->formHidden($form->get('id'));
+    echo $this->formrow($form->get('username'));
+    echo $this->formrow($form->get('password'));
+    echo $this->formsubmit($form->get('submit'));
+    echo $this->form()->closeTag();
+?>
