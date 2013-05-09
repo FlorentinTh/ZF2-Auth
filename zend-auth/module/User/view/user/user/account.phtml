@@ -17,9 +17,22 @@ $this->headtitle($title);
     $form->prepare();
     
     echo $this->form()->openTag($form);
+    echo '<dl class="zend_form">';    
     echo $this->formHidden($form->get('id'));
-    echo $this->formrow($form->get('username'));
-    echo $this->formrow($form->get('password'));
-    echo $this->formsubmit($form->get('submit'));
+    echo '<dt>' . $this->formLabel($form->get('username')) . '</dt>';
+    echo '<dd>';
+    echo $this->formInput($form->get('username'));
+    echo $this->formElementErrors($form->get('username'));
+    echo '</dd>';
+    echo '<dt>' . $this->formLabel($form->get('password')) . '</dt>';
+    echo '<dd>';
+    echo $this->formInput($form->get('password'));
+    echo $this->formElementErrors($form->get('password'));
+    echo '</dd>';
+    echo '<dd>';
+    echo $this->formsubmit($form->get('submit')->setAttribute('class', 'btn btn-inverse'));
+    echo '&nbsp; <a class="btn" href="' . $this->url('user') . '">' . $this->translate('Cancel') . '</a>';
+    echo '</dd>';
+    echo '<dl>';
     echo $this->form()->closeTag();
 ?>

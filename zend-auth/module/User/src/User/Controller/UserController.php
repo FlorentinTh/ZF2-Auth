@@ -5,6 +5,7 @@ namespace User\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Authentication\AuthenticationService;
 use Zend\Authentication\Adapter\DbTable as AuthAdapter;
+use Zend\Authentication\Validator\Authentication as AuthenticationValidator;
 use Zend\Session\Container;
 
 use User\Form\LoginForm;
@@ -51,6 +52,7 @@ class UserController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $user = new User();
+            $form->setInputFilter($user->getInputFilter());
             $form->setData($request->getPost());
             
             if ($form->isValid()) {
@@ -60,7 +62,11 @@ class UserController extends AbstractActionController
             	
             	if(!empty($username)){
             	    $this->redirect()->toRoute('user', array('action' => 'signup'));
-            	    echo '<h3>User already exist</h3>';
+            	    echo '<div class="alert alert-error">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <h4>Warning!</h4>
+                                User already exist!.
+                            </div>';
             	}else{
             	    $this->getUserTable()->createAccount($user);
             	    $this->redirect()->toRoute('user');
@@ -99,7 +105,11 @@ class UserController extends AbstractActionController
                 return $this->redirect()->toRoute('user');
             }
             else{
-                echo '<h3>Login failed !</h3>';
+                echo '<div class="alert alert-error">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <h4>Warning!</h4>
+                        Log in failed!.
+                      </div>';
             }
         }
         return array('form' => $form);
@@ -122,29 +132,46 @@ class UserController extends AbstractActionController
         $form->bind($user);
         $form->get('submit')->setAttribute('value', 'Save changes');
         $form->get('password')->setAttribute('readonly','true');
+        
         $request = $this->getRequest();
         if ($request->isPost()){
+            $form->setInputFilter($user->getInputFilter());
         	$form->setData($request->getPost());
       
         	if ($form->isValid()){
-        	    $this->getUserTable()->modifyAccount($user); 
-        	    $sm = $this->getServiceLocator();
-        	    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-        	     
-        	    $authAdapter = new AuthAdapter($dbAdapter);
         	    
-        	    $authAdapter->setTableName('user')
-        	    ->setIdentityColumn('username')
-        	    ->setCredentialColumn('password');
+        	    $username = $this->getUserTable()->getUserByName($user->username);
         	     
-        	    $authAdapter->setIdentity($user->username)
-        	    ->setCredential($user->password);
-        	     
-        	    $authService = new AuthenticationService();
-        	    $authService->setAdapter($authAdapter);
-        	    
-        	    $result = $authService->authenticate();
-        	    return $this->redirect()->toRoute('user');
+        	    if(!empty($username)){
+        	    	$this->redirect()->toRoute('user', array(
+        	    	    'action' => 'account',
+        	    	    'id' => $user->id
+        	    	));
+        	    	echo '<div class="alert alert-error">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <h4>Warning!</h4>
+                            User already exist!.
+                          </div>';
+        	    }else{
+        	    	$this->getUserTable()->modifyAccount($user);
+        	    	$sm = $this->getServiceLocator();
+        	    	$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+        	    	
+        	    	$authAdapter = new AuthAdapter($dbAdapter);
+        	    	 
+        	    	$authAdapter->setTableName('user')
+        	    	->setIdentityColumn('username')
+        	    	->setCredentialColumn('password');
+        	    	
+        	    	$authAdapter->setIdentity($user->username)
+        	    	->setCredential($user->password);
+        	    	
+        	    	$authService = new AuthenticationService();
+        	    	$authService->setAdapter($authAdapter);
+        	    	 
+        	    	$result = $authService->authenticate();
+        	    	$this->redirect()->toRoute('user');
+        	    }
             }
         }
         

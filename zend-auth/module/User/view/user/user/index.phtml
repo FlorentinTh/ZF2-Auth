@@ -4,10 +4,12 @@ $this->headtitle($title);
 ?>
 
 <h1><?php echo $this->escapehtml($title); ?></h1>
-<p>
-    <a href="<?= $this->url('user', array('action'=>'account', 'id' => $user->id));?>"><?= $this->translate('Settings'); ?></a> |
-    <a href="<?= $this->url('user', array('action' => 'signout')); ?>"><?= $this->translate('Log out'); ?></a>
-</p>
+  
+<div class="btn-group">
+    <a class="btn" href="<?= $this->url('user', array('action'=>'account', 'id' => $user->id));?>"><?= $this->translate('Settings'); ?></a>
+    <a class="btn" href="<?= $this->url('user', array('action' => 'signout')); ?>"><?= $this->translate('Log out'); ?></a>
+</div>
+<br/>
 <br/>
 <p>
     Hi, <strong><?= $user->username ?></strong> !

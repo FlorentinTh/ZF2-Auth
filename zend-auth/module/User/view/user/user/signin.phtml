@@ -11,11 +11,21 @@ $this->headtitle($title);
     $form->prepare();
     
     echo $this->form()->openTag($form);
+    
+    echo '<dl class="zend_form">';
     echo $this->formHidden($form->get('id'));
-    echo $this->formrow($form->get('username'));
-    echo $this->formrow($form->get('password'));
-    echo $this->formsubmit($form->get('submit'));
-    echo $this->form()->closeTag();
+    echo '<dt>' . $this->formLabel($form->get('username')) . '</dt>';
+    echo '<dd>';
+    echo $this->formInput($form->get('username'));
+    echo '</dd>';
+    echo '<dt>' . $this->formLabel($form->get('password')) . '</dt>';
+    echo '<dd>';
+    echo $this->formInput($form->get('password'));
+    echo '</dd>';
+    echo '<dd>';
+    echo $this->formsubmit($form->get('submit')->setAttribute('class', 'btn btn-success'));
+    echo '&nbsp; <a class="btn btn-inverse" href="' . $this->url('user', array('action' => 'signup')) . '">' . $this->translate('Sign up') . '</a>';
+    echo '</dd>';
+    echo '<dl>';
 ?>
 
-<a href="<?php echo $this->url('user', array('action' => 'signup')); ?>"><?= $this->translate('Sign up'); ?></a>
