@@ -1,5 +1,5 @@
 ## ZF2 - Auth
-**Version 1.1 Created by FlorentinTh - 2013**
+**Version 1.2 Created by FlorentinTh - 2013**
 
 ### Introduction
 
