@@ -7,12 +7,12 @@ ZF2 - Auth is a skeleton module for Zend Framework 2 that explain how to impleme
 It's verry simple and easy to improve.
 
 ### What is possible ?
-
-* Sign up
-* Sign in
-* Sign out
-* Check username avaiability
-* Edit profil
+ 
+* Sign up (v1.0)
+* Sign in (v1.0)
+* Sign out (v1.0)
+* Check username avaiability (v1.1)
+* Edit profil (v1.1)
 
 ### Coming soon
 
