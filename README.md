@@ -1,5 +1,5 @@
 ## ZF2 - Auth
-**Version 1.2 Created by FlorentinTh - 2013**
+**Version 1.3 Created by FlorentinTh - 2013**
 
 ### Introduction
 
@@ -13,6 +13,7 @@ It's verry simple and easy to improve.
 * Sign out (v1.0)
 * Check username avaiability (v1.1)
 * Edit profil (v1.1)
+* Remove user profile (v1.3)
 
 ### Coming soon
 
@@ -20,8 +21,8 @@ It's verry simple and easy to improve.
 * ~~Edit profil~~ (v1.1)
 * ~~Best UI~~ (v1.2)
 * ~~InputFilters~~ (v1.2)
-* Auth Adapter Validators (1.3)
-* Delete profile (1.3)
+* ~~Remove user profile~~ (v1.3)
+* Auth Adapter Validators (v1.4)
 
 ### What is required ?
 
