@@ -20,6 +20,8 @@ It's verry simple and easy to improve.
 * ~~Edit profil~~ (v1.1)
 * ~~Best UI~~ (v1.2)
 * ~~InputFilters~~ (v1.2)
+* Auth Adapter Validators (1.3)
+* Delete profile (1.3)
 
 ### What is required ?
 
