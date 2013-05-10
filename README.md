@@ -67,3 +67,6 @@ Navigate to `http://yourproject/user/` and use this information to sign in :
 	
 		username : user1
 		password : password
+
+### Licence 
+[id]: http://creativecommons.org/licenses/by/3.0/  "Creative Commons"
