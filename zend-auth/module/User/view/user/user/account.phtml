@@ -3,7 +3,38 @@ $title = 'Profile settings';
 $this->headtitle($title);
 ?>
 
-<h1><?= $this->escapehtml($title); ?></h1>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#yes, #no, #delete-alert, #no-alert, #user-alert').hide();
+	$('#delete').click(function(){
+		$('#yes, #no').show();
+		$('#delete-alert').fadeIn();
+		$('#delete').hide();
+	});
+
+	$('#no').click(function(){
+		$('#delete-alert').fadeOut(function(){
+			$('#no-alert').fadeIn().delay('2000').fadeOut();
+		});
+		$('#yes, #no').hide();
+		$('#delete').show();
+	});
+});
+</script>
+
+<div class="alert alert-error" id='delete-alert'>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>Warning!</h4>
+    Are you sure ? This cannot be undone !
+</div>
+
+<div class="alert alert-success" id='no-alert'>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>OK!</h4>
+    We will not delete your account
+</div>
+
+<h3><?= $this->escapehtml($title); ?></h3>
 
 <?php 
     $form = $this->form;
@@ -32,6 +63,12 @@ $this->headtitle($title);
     echo '<dd>';
     echo $this->formsubmit($form->get('submit')->setAttribute('class', 'btn btn-inverse'));
     echo '&nbsp; <a class="btn" href="' . $this->url('user') . '">' . $this->translate('Cancel') . '</a>';
+    echo '</dd><br/>';
+    echo '<dd>';
+    echo '<h4>Delete your account : </h4>';
+    echo '<a class="btn btn-danger" id="delete">' . $this->translate('Delete account') . '</a>';
+    echo '<a class="btn btn-inverse" id="yes" href="' . $this->url('user', array('action' => 'remove', 'id' => $user->id)) . '">' . $this->translate('Yes') . '</a> &nbsp;';
+    echo '<a class="btn btn-success" id="no">' . $this->translate('No') . '</a>';
     echo '</dd>';
     echo '<dl>';
     echo $this->form()->closeTag();

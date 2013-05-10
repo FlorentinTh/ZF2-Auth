@@ -147,7 +147,7 @@ class UserController extends AbstractActionController
         	    	    'action' => 'account',
         	    	    'id' => $user->id
         	    	));
-        	    	echo '<div class="alert alert-error">
+        	    	echo '<div class="alert alert-error" id="change-alert">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <h4>Warning!</h4>
                             User already exist!.
@@ -187,6 +187,24 @@ class UserController extends AbstractActionController
         $auth->clearIdentity();
         $session = new Container('user');
         $session->offsetUnset('username');
+        
+        return $this->redirect()->toRoute('user');
+    }
+    
+    public function removeAction(){
+        $session = new Container('user');
+        
+        $id = (int)$this->params()->fromRoute('id', 0);
+        $user = $this->getUserTable()->getUser($id);
+        $username = $user->username;
+        $logged = $session->offsetGet('username');
+        
+        if($username != $logged):return $this->redirect()->toRoute('user');endif;
+        
+        $auth = new AuthenticationService();
+        $auth->clearIdentity();
+        $session->offsetUnset('username');
+        $this->getUserTable()->removeAccount($id);
         return $this->redirect()->toRoute('user');
     }
 }

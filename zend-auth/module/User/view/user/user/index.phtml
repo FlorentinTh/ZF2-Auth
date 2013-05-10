@@ -3,7 +3,7 @@ $title = 'Welcome !';
 $this->headtitle($title);
 ?>
 
-<h1><?php echo $this->escapehtml($title); ?></h1>
+<h3><?= $this->escapehtml($title); ?></h3>
   
 <div class="btn-group">
     <a class="btn" href="<?= $this->url('user', array('action'=>'account', 'id' => $user->id));?>"><?= $this->translate('Settings'); ?></a>
