@@ -12,13 +12,13 @@ It's verry simple and easy to improve.
 * Sign in (v1.0)
 * Sign out (v1.0)
 * Check username avaliability (v1.1)
-* Edit profil (v1.1)
+* Edit user profile (v1.1)
 * Remove user profile (v1.3)
 
 ### Coming soon
 
 * ~~Check username avaliability~~ (v1.1)
-* ~~Edit profil~~ (v1.1)
+* ~~Edit user profile~~ (v1.1)
 * ~~Best UI~~ (v1.2)
 * ~~InputFilters~~ (v1.2)
 * ~~Remove user profile~~ (v1.3)
